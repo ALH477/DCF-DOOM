@@ -1,0 +1,15 @@
+services:
+  freedm:
+    image: rcdailey/zandronum-server:official-latest
+    restart: always
+    network_mode: host
+    command: >
+      -port 8888
+      -iwad /data/freedm.wad
+      +exec /configs/global.cfg
+      +exec /configs/freedm.cfg  # Or deathmatch.cfg – create this for custom settings
+    volumes:
+      - /usr/share/games/doom/freedm.wad:/data/freedm.wad:ro  # Mounts just the FreeDM IWAD from host
+      - ./configs:/configs:ro  # Local directory for your .cfg files (create it if needed)
+
+      # port 8888 for the 125hz buffer shim
