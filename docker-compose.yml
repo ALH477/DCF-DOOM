@@ -5,7 +5,7 @@ services:
     # Remove network_mode: host  ← important, we want container network isolation now
     ports:
       - "10666:10666/udp"      # optional fallback direct port (see below)
-       - "8888:8888/udp" 
+      - "8888:8888/udp" 
     command:
       - -port
       - "8888"                 # ← Zandronum now listens on 8888 inside container
